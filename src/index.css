@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #020617;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+
+/* Touch device detection: show joystick + touch hints, hide desktop hints */
+@media (hover: none) and (pointer: coarse) {
+  .non-touch-only { display: none !important; }
+  .touch-only { display: flex !important; }
+  .touch-joystick { display: block !important; }
+}
+
+/* Non-touch devices: hide joystick + touch hints, show desktop hints */
+@media (hover: hover) and (pointer: fine) {
+  .touch-joystick { display: none !important; }
+  .touch-only { display: none !important; }
+  .non-touch-only { display: block !important; }
+}
+
+/* Prevent text selection during drag */
+canvas { touch-action: none; -webkit-user-select: none; user-select: none; }
